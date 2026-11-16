@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USA Dating - Meet Singles</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#fff8fb;
+ color:#242238;
+}
+header{
+ background:white;
+ padding:18px 5%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ box-shadow:0 2px 12px #0001;
+}
+.logo{font-size:25px;font-weight:bold;color:#ed3976}
+nav a{
+ margin:0 10px;
+ color:#242238;
+ text-decoration:none;
+ font-weight:bold;
+}
+.hero{
+ padding:55px 6%;
+ background:linear-gradient(110deg,#201c35,#794665);
+ color:white;
+}
+.hero h1{font-size:42px;margin:0 0 12px}
+main{max-width:1200px;margin:auto;padding:30px 4%}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:18px;
+}
+.card{
+ background:white;
+ border-radius:15px;
+ overflow:hidden;
+ box-shadow:0 4px 18px #0001;
+ border:1px solid #eee;
+}
+.photo{
+ height:190px;
+ display:grid;
+ place-items:center;
+ color:white;
+ font-size:65px;
+ font-weight:bold;
+ background:linear-gradient(135deg,#db779a,#665080);
+ position:relative;
+}
+.card:nth-child(3n+2) .photo{
+ background:linear-gradient(135deg,#e2a57b,#875271);
+}
+.card:nth-child(3n) .photo{
+ background:linear-gradient(135deg,#779ba9,#555078);
+}
+.tag{
+ position:absolute;
+ top:10px;
+ left:10px;
+ background:#222b;
+ color:white;
+ border-radius:20px;
+ padding:6px 9px;
+ font-size:10px;
+}
+.info{padding:14px}
+.info h3{margin:0 0 7px}
+.muted{color:#777;font-size:13px}
+.bio{font-size:14px;min-height:38px;line-height:1.4}
+button{
+ width:100%;
+ padding:10px;
+ border-radius:8px;
+ border:1px solid #ddd;
+ background:#fff;
+ font-weight:bold;
+ cursor:pointer;
+}
+.adlabel{
+ font-size:11px;
+ color:#777;
+ font-weight:bold;
+ margin:13px 0 7px;
+}
+.ad{
+ display:block;
+ text-align:center;
+ text-decoration:none;
+ background:#ed3976;
+ color:white;
+ padding:11px;
+ border-radius:8px;
+ font-weight:bold;
+ font-size:14px;
+}
+.network{
+ text-align:center;
+ color:#777;
+ font-size:11px;
+ margin-top:7px;
+}
+.note{
+ background:white;
+ border:1px solid #eee;
+ border-radius:10px;
+ padding:15px;
+ margin-top:25px;
+ color:#666;
+ font-size:13px;
+ line-height:1.5;
+}
+footer{
+ background:#242238;
+ color:#eee;
+ padding:24px 5%;
+ font-size:13px;
+}
+@media(max-width:850px){
+ .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+ header{flex-wrap:wrap}
+ nav{width:100%;display:flex;justify-content:space-between}
+ nav a{margin:8px 0}
+ .photo{height:150px}
+ .grid{gap:11px}
+ .info{padding:10px}
+ .hero h1{font-size:32px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">♡ USA Dating</div>
+ <nav>
+  <a href="#">Home</a>
+  <a href="#profiles">Profiles</a>
+  <a href="#about">About</a>
+ </nav>
+ <b>📍 United States</b>
+</header>
+
+<section class="hero">
+ <h1>Discover Singles<br>Across the USA</h1>
+ <p>Explore fictional sample profiles and discover sponsored offers.</p>
+</section>
+
+<main id="profiles">
+
+<h2>Featured Profiles</h2>
+<p class="muted">Explore our sample profiles</p>
+
+<div class="grid" id="grid"></div>
+
+<div class="note">
+<b>Notice:</b> All profiles are fictional demo characters.
+They do not represent real people or active dating accounts.
+Sponsored links are optional advertisements.
+</div>
+
+</main>
+
+<footer id="about">
+USA Dating Demo · 18+ only · No registration or real matchmaking.
+</footer>
+
+<script>
+
+// PROFILE + SMARTLINK DATA
+
+const profiles=[
+
+{
+name:"Emily",age:24,city:"New York, NY",
+bio:"Coffee shops, city walks and live music.",
+initial:"E",network:"Adsterra",
+url:"https://asiafilm.org/4/5872a97cbdcb63d702f41bd2e431ec9f"
+},
+
+{
+name:"Sophia",age:26,city:"Los Angeles, CA",
+bio:"Movies, weekend trips and trying new food.",
+initial:"S",network:"Adsterra",
+url:"https://auctionr.org/4/d09e6fcb4f5d62f8d1d4b6fc91aefde0"
+},
+
+{
+name:"Olivia",age:23,city:"Chicago, IL",
+bio:"Art, books and exploring the city.",
+initial:"O",network:"Adsterra",
+url:"https://auctionr.org/4/ba176c22af06acc71823007b546f3d98"
+},
+
+{
+name:"Ava",age:27,city:"Miami, FL",
+bio:"Beach sunsets, fitness and relaxed weekends.",
+initial:"A",network:"Adsterra",
+url:"https://auctionr.org/4/7aea07dcd8a2cad183254aae73b16dcc"
+},
+
+{
+name:"Mia",age:25,city:"Austin, TX",
+bio:"Live music and outdoor adventures.",
+initial:"M",network:"Adsterra",
+url:"https://auctionr.org/4/7058234ae53ed87ed4ed067fa3ea15ec"
+},
+
+{
+name:"Isabella",age:28,city:"Seattle, WA",
+bio:"Cafés, hiking and photography.",
+initial:"I",network:"Monetag",
+url:"https://uplcm.com/4/9449357"
+},
+
+{
+name:"Amelia",age:24,city:"Boston, MA",
+bio:"Museums, cooking and learning new things.",
+initial:"A",network:"Monetag",
+url:"https://uplcm.com/4/11179541"
+},
+
+{
+name:"Harper",age:26,city:"Denver, CO",
+bio:"Mountain views and road trips.",
+initial:"H",network:"Monetag",
+url:"https://uplcm.com/4/9449352"
+},
+
+{
+name:"Evelyn",age:23,city:"San Diego, CA",
+bio:"Beach days, music and good conversations.",
+initial:"E",network:"Monetag",
+url:"https://uplcm.com/4/9547727"
+},
+
+{
+name:"Abigail",age:27,city:"Portland, OR",
+bio:"Plants, bookstores and local places.",
+initial:"A",network:"Monetag",
+url:"https://uplcm.com/4/9547730"
+}
+
+];
+
+// CREATE PROFILE CARDS
+
+const grid=document.getElementById("grid");
+
+profiles.forEach(p=>{
+
+const card=document.createElement("article");
+
+card.className="card";
+
+card.innerHTML=`
+
+<div class="photo">
+ <span class="tag">FICTIONAL DEMO</span>
+ ${p.initial}
+</div>
+
+<div class="info">
+
+<h3>${p.name}, ${p.age}</h3>
+
+<div class="muted">
+📍 ${p.city}, USA
+</div>
+
+<p class="bio">${p.bio}</p>
+
+<button type="button">
+View Sample Details
+</button>
+
+<div class="adlabel">
+ADVERTISEMENT · SPONSORED
+</div>
+
+<a class="ad"
+href="${p.url}"
+target="_blank"
+rel="nofollow sponsored noopener">
+
+Visit Sponsored Offer ↗
+
+</a>
+
+<div class="network">
+${p.network} · Advertisement
+</div>
+
+</div>
+`;
+
+card.querySelector("button").addEventListener("click",()=>{
+alert(
+p.name+", "+p.age+
+"\n"+p.city+
+"\n"+p.bio+
+"\nFictional sample profile."
+);
+});
+
+grid.appendChild(card);
+
+});
+
+</script>
+
+</body>
+</html>
